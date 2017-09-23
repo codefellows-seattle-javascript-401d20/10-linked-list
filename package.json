@@ -1,0 +1,15 @@
+{
+  "name": "model",
+  "version": "0.0.1",
+  "description": "",
+  "main": "linked-list.js",
+  "scripts": {
+    "test": "jest -i"
+  },
+  "keywords": [],
+  "author": "katherinemariehanson@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^21.1.0"
+  }
+}
