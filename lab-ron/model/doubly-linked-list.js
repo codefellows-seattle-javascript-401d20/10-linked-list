@@ -10,12 +10,16 @@ class DoublyLinkedList {
   append(node) {
     if (!(node instanceof DoublyLinkedList))
       throw new Error('__USAGE_ERROR__: Node must be a DoublyLinkedList');
-    if (!this.next)
+    if (!this.next) {
+      node.prev = this;
       this.next = node;
+    }
     else
       this.next.append(node);
     return this;
   }
+
+
 
   remove(node) {
     if (!(node instanceof DoublyLinkedList))
