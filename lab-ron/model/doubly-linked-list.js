@@ -19,8 +19,6 @@ class DoublyLinkedList {
     return this;
   }
 
-
-
   remove(node) {
     if (!(node instanceof DoublyLinkedList))
       throw new Error('__USAGE_ERROR__: Node must be a DoublyLinkedList');
