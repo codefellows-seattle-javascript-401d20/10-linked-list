@@ -36,21 +36,20 @@ class DoublyLinkedList {
 
   map(callback) {
     if (!(typeof callback === 'function'))
-      throw new Error('__USAGE_ERROR_: reduce should have a callback function');
+      throw new Error('__USAGE_ERROR_: reduce should take in a callback function as its parameter');
 
-      let pointer = this;
-      let result = [];
+    let pointer = this;
 
     while (pointer) {
-      result.push(callback(pointer.value));
+      pointer.value = callback(pointer.value);
       pointer = pointer.next;
     }
-    return result;
+    return this;
   }
 
   reduce(...args) {
     if (!(typeof args[0] === 'function'))
-      throw new Error('__USAGE_ERROR_: reduce should have a callback and a initial state');
+      throw new Error('__USAGE_ERROR_: reduce should take in a callback and a initial state');
 
     let pointer = this;
     let [callback, initialState] = args;
@@ -63,10 +62,5 @@ class DoublyLinkedList {
     return accumulator;
   }
 }
-
-
-
-
-
 
 module.exports = DoublyLinkedList;
