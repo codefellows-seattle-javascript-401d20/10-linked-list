@@ -12,7 +12,6 @@ describe('doubly linked list', () => {
   test('it should append a node to the end of the list', () => {
     let result = new DoublyLinkedList(3);
     result.append(new DoublyLinkedList(4)).append(new DoublyLinkedList(5));
-
     expect(result.value).toBe(3);
     expect(result.next.value).toBe(4);
     expect(result.next.next.value).toBe(5);
