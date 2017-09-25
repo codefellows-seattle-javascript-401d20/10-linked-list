@@ -31,6 +31,12 @@ describe('DOUBLY LINKED LIST', () => {
 
 
   describe('Remove from Doubly Linked List', () => {
+
+    test('Doubly linked list not removed', () => {
+      let result = new DoublyLinkedList(3);
+      expect(() => result.remove(5)).toThrowError('__USAGE_ERROR__: Node must be a DoublyLinkedList');
+    });
+
     test('Doubly linked list removed successfully', () => {
       let result = new DoublyLinkedList(3);
       let second = new DoublyLinkedList(5);
@@ -59,20 +65,37 @@ describe('DOUBLY LINKED LIST', () => {
       let result = new DoublyLinkedList(3);
       result.append(new DoublyLinkedList(5));
       result.append(new DoublyLinkedList(7));
-      result.map(n => n + 2);
-      expect(result.value).toBe(5);
-      expect(result.next.value).toBe(7);
-      expect(result.next.next.value).toBe(9);
+      let newMap = result.map(n => n + 2);
+
+      expect(result.value).toBe(3);
+      expect(result.next.value).toBe(5);
+      expect(result.next.next.value).toBe(7);
+
+      expect(newMap.value).toBe(5);
+      expect(newMap.next.value).toBe(7);
+      expect(newMap.next.next.value).toBe(9);
+
     });
   });
 
   describe('Reduce Function', () => {
     test('Not implemented properly', () => {
       let result = new DoublyLinkedList(3);
-
       expect(() => result.reduce('hello', 'world'))
         .toThrowError('__USAGE_ERROR_: reduce should take in a callback and a initial state');
+    });
 
+    test('Reduce function working', () => {
+      let result = new DoublyLinkedList(3);
+      result.append(new DoublyLinkedList(5));
+      result.append(new DoublyLinkedList(7));
+      let totalSum = result.reduce((a, b) => a + b, 0);
+
+      expect(result.value).toBe(3);
+      expect(result.next.value).toBe(5);
+      expect(result.next.next.value).toBe(7);
+
+      expect(totalSum).toBe(15);
 
     });
   });

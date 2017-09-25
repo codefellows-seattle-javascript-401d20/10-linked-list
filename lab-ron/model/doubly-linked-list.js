@@ -39,13 +39,19 @@ class DoublyLinkedList {
       throw new Error('__USAGE_ERROR_: reduce should take in a callback function as its parameter');
 
     let pointer = this;
+    let list;
 
     while (pointer) {
-      pointer.value = callback(pointer.value);
+      if (!(list instanceof DoublyLinkedList))
+        list = new DoublyLinkedList(callback(pointer.value));
+      else
+        list.append(new DoublyLinkedList(callback(pointer.value)));
       pointer = pointer.next;
     }
-    return this;
+    return list;
   }
+
+
 
   reduce(...args) {
     if (!(typeof args[0] === 'function'))
