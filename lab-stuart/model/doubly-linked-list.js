@@ -22,6 +22,19 @@ class DoublyLinkedList {
     return this;
   }
 
+  prepend(node) {
+    if (!(node instanceof DoublyLinkedList))
+      throw new Error('Node must be a DoublyLinkedList.');
+    if (this.prev) {
+      this.prev.append(node);
+    } else {
+      node.next = this;
+      this.prev = node;
+    }
+    this.head = node;
+    return this;
+  }
+
   remove(node) {
     if (!(node instanceof DoublyLinkedList))
       throw new Error('Node must be a DoublyLinkedList.');
