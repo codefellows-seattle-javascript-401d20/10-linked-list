@@ -14,28 +14,38 @@ append(node) {
     this.next = node;
   else
     this.next.append(node);
-    this.previous = this;
+    this.next.previous = this;
   return this
   }
 
 remove(node){
   if(!(node instanceof DoublyList))
     throw new Error('Node must be a linked list');
-  if(!this.next)
-    return this;
-  if(this.next === node)
-    this.next = this.next.next;
-  else
-    this.next.remove(node)
-
-    return this
+  if(this === node) {
+    let prev = this.previous;
+    prev.next = prev.next.next;
+    prev.next.previous = prev;
+  } else {
+    if(!this.next)
+      return this;
+    this.next.remove(node);
+    }
   }
+
+  reduce(node){
+    if(!(node instanceof DoublyList))
+      throw new console.error('Must be a linked list');
+    if(!this.next)
+      return this;
+    if(this.next)
+      var result = this;
+      let reduceReturn = (callback, initialState) => args;
+        var accumulativeValue = initialState;
+      while(node)
+        accumulativeValue = callback(accumulativeValue, result.value);
+        result = result.next;
+      return accumulativeValue;
+    };
 }
-
-filter(node)
-  if(!(node instanceof DoublyList))
-    throw new console.error('Must be a linked list');
-  if(!this.next)
-
 
 module.exports = DoublyList;
