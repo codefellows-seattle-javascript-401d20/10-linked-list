@@ -38,6 +38,8 @@ describe('linked list', () => {
     let tail = new DoublyList(4);
     head.append(tail);
 
-    expect(this.value).toBe(7);
+    head.print();
+    expect(head.value).toBe(3);
+    expect(tail.value).toBe(4);
   })
 });
