@@ -33,13 +33,25 @@ describe('linked list', () => {
     expect(head.next.value).toBe(5);
   });
 
-  test('should return the accumulative value of the nodes collection', () => {
-    let head = new DoublyList(3);
-    let tail = new DoublyList(4);
-    head.append(tail);
+  test('should return the values of the collection in order', () => {
+    let one = new DoublyList(3);
+    let two = new DoublyList(4);
+    one.append(two)
+    let three = new DoublyList(5);
+    one.append(three);
 
-    head.print();
-    expect(head.value).toBe(3);
-    expect(tail.value).toBe(4);
+    expect(one.value).toBe(3);
+    expect(one.next.value).toBe(4)
+    expect(one.next.next.value).toBe(5)
+  })
+
+  test('should return null if the current node does not have a this.next', () => {
+    let one = new DoublyList(3);
+    let two = new DoublyList(4);
+    one.append(two)
+
+    expect(one.value).toBe(3);
+    expect(one.next.value).toBe(4)
+    expect(one.next.next).toBe(null)
   })
 });
